@@ -7,25 +7,17 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {path} from '../Constants';
+import Category from "../component/Category"
 export default class SectionScreen extends Component {
-  handlePress = () => {
-    this.props.navigation.navigate(path.AVAILABLEHALL);
+  handlePress = (pushPath) => {
+    this.props.navigation.navigate(pushPath);
   };
   render() {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.hallContainer}
-            onPress={this.handlePress}
-            activeOpacity={0.8}
-            hitSlop={styles.hitSlop}>
-            <Image
-              source={require('../assets/parliament.png')}
-              style={styles.available}
-            />
-          </TouchableOpacity>
-        </View>
+        <Category
+        handlePress={this.handlePress}
+        />
       </SafeAreaView>
     );
   }
