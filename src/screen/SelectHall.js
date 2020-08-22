@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Picker, Text} from 'react-native';
+import {View, StyleSheet, SafeAreaView} from 'react-native';
 import {hall} from '../utils';
 import SelectedHallDetail from '../component/SelectedHallDetail';
-import ModalSelector from 'react-native-modal-selector';
-
+import Select from '../component/Select';
 export default class SelectHall extends Component {
   state = {
     selectedHall: {label: 'Select Hall'},
@@ -17,26 +16,28 @@ export default class SelectHall extends Component {
   render() {
     const {selectedHall} = this.state;
     return (
-      <View style={{backgroundColor: 'white', flex: 1}}>
-        <View style={styles.pickerContainer}>
-          <ModalSelector
-            data={hall}
-            initValue={'Select Hall'}
-            onChange={(option) => {
-              this.handleChange(option);
-            }}>
-            <View style={styles.pickerText}>
-              <Text>{selectedHall.label}</Text>
-            </View>
-          </ModalSelector>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <View style={styles.pickerContainer}>
+            <Select
+              data={hall}
+              onChange={this.handleChange}
+              selectedElement={selectedHall}
+            />
+          </View>
+          <SelectedHallDetail data={selectedHall} />
         </View>
-        <SelectedHallDetail data={selectedHall} />
-      </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  safeArea: {flex: 1},
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   pickerContainer: {
     width: '70%',
     height: 40,
@@ -51,12 +52,5 @@ const styles = StyleSheet.create({
   modal: {
     borderColor: 'black',
     color: 'black',
-  },
-  pickerText: {
-    borderWidth: 1,
-    borderColor: 'blue',
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor: '#caede7',
   },
 });
