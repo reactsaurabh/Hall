@@ -1,3 +1,4 @@
+import {images} from "./Constants"
 export const hall = [
   {label: 'Hall1', value: 'hall1', capacity: 10, price: 100, foodAllowed: 'No'},
   {
@@ -32,3 +33,34 @@ export const announcementData = [
     data: [{id: 14, text: 'This is Forth Announcement description'}],
   },
 ];
+
+export const foodData=[
+    {
+        id:1,
+        name:"Dosa",
+        price:"$20",
+        image:images.dosa,
+        cuisine:"Indian"
+    },
+    {
+        id:2,
+        name:"Pizza",
+        price:"$30",
+        image:images.pizza,
+        cuisine:"Italian"
+    } ,{
+        id:1,
+        name:"Burger",
+        price:"$40",
+        image:images.burger,
+        cuisine:"No idea"
+
+    } ,{
+        id:1,
+        name:"Paneer Tikka",
+        price:"$20",
+        image:images.paneer,
+        cuisine:"Indian"
+
+    }
+]
