@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   Dimensions,
+  Platform
 } from 'react-native';
 import Image from '../common/Image';
 
@@ -36,7 +37,7 @@ export default function ImageCardDescription(props) {
 const styles = StyleSheet.create({
   image: {
     width: width / 2,
-    height: height / 5,
+    height: Platform.OS==="ios"?height / 7:height / 5,
     resizeMode: 'cover',
   },
   container: {
